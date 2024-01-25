@@ -36,18 +36,6 @@
                 <v-list>
                     <v-list-item
                         class="px-2"
-                        key="orders"
-                        to="/orders/orders"
-                        @click="changeUrl()"
-                        color="primary"
-                        style="font-weight:700;"
-                    >
-                        Order
-                    </v-list-item>
-
-
-                    <v-list-item
-                        class="px-2"
                         key="inventories"
                         to="/inventories/inventories"
                         @click="changeUrl()"
@@ -55,6 +43,18 @@
                         style="font-weight:700;"
                     >
                         Inventory
+                    </v-list-item>
+
+
+                    <v-list-item
+                        class="px-2"
+                        key="orders"
+                        to="/orders/orders"
+                        @click="changeUrl()"
+                        color="primary"
+                        style="font-weight:700;"
+                    >
+                        Order
                     </v-list-item>
 
 
@@ -138,17 +138,17 @@ export default {
         ImageUrl: '',
         aggregate: [
             { 
-                title: 'Order', 
-                description: '', 
-                key: 'orders', 
-                route: '/orders/orders',
-                ImageUrl: '',
-            },
-            { 
                 title: 'Inventory', 
                 description: '', 
                 key: 'inventories', 
                 route: '/inventories/inventories',
+                ImageUrl: '',
+            },
+            { 
+                title: 'Order', 
+                description: '', 
+                key: 'orders', 
+                route: '/orders/orders',
                 ImageUrl: '',
             },
             

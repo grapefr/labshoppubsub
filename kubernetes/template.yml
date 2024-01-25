@@ -3,22 +3,22 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: order
+  name: inventory
   labels:
-    app: order
+    app: inventory
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: order
+      app: inventory
   template:
     metadata:
       labels:
-        app: order
+        app: inventory
     spec:
       containers:
-        - name: order
-          image: username/order:latest
+        - name: inventory
+          image: username/inventory:latest
           ports:
             - containerPort: 8080
           readinessProbe:
@@ -43,22 +43,22 @@ spec:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: inventory
+  name: order
   labels:
-    app: inventory
+    app: order
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: inventory
+      app: order
   template:
     metadata:
       labels:
-        app: inventory
+        app: order
     spec:
       containers:
-        - name: inventory
-          image: username/inventory:latest
+        - name: order
+          image: username/order:latest
           ports:
             - containerPort: 8080
           readinessProbe:
@@ -125,23 +125,6 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: order
-  labels:
-    app: order
-spec:
-  ports:
-    - port: 8080
-      targetPort: 8080
-  selector:
-    app: order
-
-
----
-
-
-apiVersion: v1
-kind: Service
-metadata:
   name: inventory
   labels:
     app: inventory
@@ -151,6 +134,23 @@ spec:
       targetPort: 8080
   selector:
     app: inventory
+
+
+---
+
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: order
+  labels:
+    app: order
+spec:
+  ports:
+    - port: 8080
+      targetPort: 8080
+  selector:
+    app: order
 
 
 ---
